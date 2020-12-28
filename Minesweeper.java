@@ -12,12 +12,16 @@ public class Minesweeper {
     }
 
     public void printField () {
-        for (String[] i : arr) {
-            for (String j : i) {
-                System.out.print(j);
+        System.out.println(" │123456789│\n" +
+                "—│—————————│");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(i + 1 + "│");
+            for (int j = 0; j < arr.length; j++) {
+                System.out.print(/*arr[i][j].equals("X") ? "." : */arr[i][j]);
             }
-            System.out.println();
+            System.out.println("|");
         }
+        System.out.println("—│—————————│");
     }
     public String[][] fillField () {
         for (int i = 0; i < arr.length; i++) {
