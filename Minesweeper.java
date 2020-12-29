@@ -3,26 +3,14 @@ package minesweeper;
 import java.util.Random;
 
 public class Minesweeper {
-    private final String[][] arr;
-    private final int n;
+    String[][] arr;
+    int n;
 
     public Minesweeper(String[][] arr, int n) {
         this.arr = arr;
         this.n = n;
     }
 
-    public void printField () {
-        System.out.println(" │123456789│\n" +
-                "—│—————————│");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(i + 1 + "│");
-            for (int j = 0; j < arr.length; j++) {
-                System.out.print(/*arr[i][j].equals("X") ? "." : */arr[i][j]);
-            }
-            System.out.println("|");
-        }
-        System.out.println("—│—————————│");
-    }
     public String[][] fillField () {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
@@ -44,7 +32,7 @@ public class Minesweeper {
         }
         return arr;
     }
-    public String[][] chekMines () {
+    public String[][] placeNumMarks() {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
                 if (!arr[i][j].equals("X")) {

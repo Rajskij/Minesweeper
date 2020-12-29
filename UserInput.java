@@ -3,36 +3,36 @@ package minesweeper;
 public class UserInput {
     String[][] userField;
 
-    public UserInput(String[][] userField) {
-        this.userField = userField;
+    public UserInput(String[][] playField) {
+        this.userField = playField;
     }
 
     public void setMark(int x, int y) {
-        this.userField[x][y] = "*";
+        userField[x][y] = userField[x][y].equals("*") ? "." : "*";
     }
 
     public boolean endGameCheck (String[][] arr) {
         boolean endGame = true;
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length && endGame; i++) {
             for (int j = 0; j < arr.length; j++) {
                 if (userField[i][j].equals(".") && arr[i][j].equals("X")) {
                     endGame = false;
-                    break;
                 }
             }
         }
         return endGame;
     }
 
-    public String[][] fillUserField() {
-        for (String[] s : userField) {
-            for (String str : s) {
-                if (str.equals("X")) {
-                    str = ".";
+    public void fillUserField(String[][] str) {
+        for (int i = 0; i < userField.length; i++) {
+            for (int j = 0; j < userField.length; j++) {
+                if (str[i][j].equals("X")) {
+                    userField[i][j] = ".";
+                } else {
+                    userField[i][j] = str[i][j];
                 }
             }
         }
-        return this.userField;
     }
 
     public void printField () {
@@ -41,7 +41,7 @@ public class UserInput {
         for (int i = 0; i < userField.length; i++) {
             System.out.print(i + 1 + "│");
             for (int j = 0; j < userField.length; j++) {
-                System.out.print(userField[i][j].equals("X") ? "." : userField[i][j]);
+                System.out.print(userField[i][j]);
             }
             System.out.println("|");
         }
